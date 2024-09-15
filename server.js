@@ -13,15 +13,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Find your Account SID and Auth Token at twilio.com/console
 // and set the environment variables. See http://twil.io/secure
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
+const accountSid = TWILIO_ACCOUNT_SID;
+const authToken = TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
 
-app.get("/", async (req, res) => {
+app.get("https://puzzle-game-api.onrender.com/send-sms", async (req, res) => {
   const message = await client.messages.create({
     body: "Hi Nathan",
-    from: process.env.TO_NUMBER,
-    to: process.env.FROM_NUMBER,
+    from: TO_NUMBER,
+    to: FROM_NUMBER,
   });
 
   console.log("SENT");
